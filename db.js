@@ -16,11 +16,11 @@ const companyNames = ( count = 5 ) =>{
 }
 // use Company.create? 
 Company.createFake = function(){
-    this.create({name: faker.company.companyName()});
+    return this.create({name: faker.company.companyName()});
 }
 
 const syncAndSeed = () =>{
-    return conn.sync({foce: true})
+    return conn.sync({force: true})
         .then(()=>companyNames())
         // .then(names => console.log(names))
         .then((companies)=>{Promise.all(companies.map((company)=>{
